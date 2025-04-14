@@ -57,6 +57,7 @@
 
                     <View
                         android:id="@+id/view"
+                        android:background="@color/DarkBlueGreen"
                         android:layout_width="0dp"
                         android:layout_height="290dp"
                         android:layout_marginStart="16dp"
