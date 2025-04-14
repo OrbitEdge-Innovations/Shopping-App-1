@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ShoppingApp</string>
+    <string name="welcome">welcome</string>
+    <string name="john_johnson">John Johnson</string>
+    <string name="_1">1</string>
+    <string name="search">Search...</string>
 </resources>
