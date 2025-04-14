@@ -141,7 +141,8 @@
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button"
+                    android:text="Buy Now"
+                    android:backgroundTint="@color/DarkBlueGreen"
                     app:layout_constraintTop_toTopOf="@+id/textView8"
                     tools:layout_editor_absoluteX="254dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
