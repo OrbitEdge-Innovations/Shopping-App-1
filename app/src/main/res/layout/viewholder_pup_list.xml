@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="175dp"
-    android:layout_height="240dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="3dp"
     android:background="@drawable/grey_background">
@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/pic"
         android:layout_width="175dp"
-        android:layout_height="155dp"
+        android:layout_height="185dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -34,12 +34,11 @@
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/star"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="4dp"
-            />
+            app:srcCompat="@drawable/star" />
 
         <TextView
             android:id="@+id/scoretxt"

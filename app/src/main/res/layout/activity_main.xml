@@ -325,9 +325,9 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:layout_margin="32dp"
+            android:layout_margin="1dp"
             android:background="@drawable/edittext_background"
             android:padding="4dp"
             app:fabCradleMargin="8dp"
