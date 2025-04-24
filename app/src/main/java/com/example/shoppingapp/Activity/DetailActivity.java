@@ -3,11 +3,14 @@ package com.example.shoppingapp.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.shoppingapp.Helper.ManagmentCart;
+import com.example.shoppingapp.R;
 import com.example.shoppingapp.databinding.ActivityDetailBinding;
 import com.example.shoppingapp.domain.PopularDomain;
 
@@ -16,26 +19,31 @@ public class DetailActivity extends AppCompatActivity {
     private PopularDomain object;
     private int numberOrder=1;
     private ManagmentCart managmentCart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityDetailBinding.inflate(getLayoutInflater());
+        binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         getBundles();
-        managmentCart=new ManagmentCart(this);
+        managmentCart = new ManagmentCart(this);
+        setupBottomNavigation();
     }
 
     private void getBundles() {
-        object=(PopularDomain) getIntent().getSerializableExtra("object");
-        int drawableResourceId=this.getResources().getIdentifier(object.getPicUrl(),"drawable",this.getPackageName());
+        object = (PopularDomain) getIntent().getSerializableExtra("object");
+        int drawableResourceId = this.getResources().getIdentifier(object.getPicUrl(), "drawable", this.getPackageName());
+
         Glide.with(this)
                 .load(drawableResourceId)
                 .into(binding.itemPic);
+
         binding.titleTxt.setText(object.getTitle());
-        binding.priceTxt.setText("$"+object.getPrice());
+        binding.priceTxt.setText("$" + object.getPrice());
         binding.descriptionTxt.setText(object.getDescription());
-        binding.reviewTxt.setText(object.getReview()+"");
-        binding.ratingTxt.setText(object.getScore()+"");
+        binding.reviewTxt.setText(object.getReview() + "");
+        binding.ratingTxt.setText(object.getScore() + "");
 
         // Add to cart button functionality
         binding.addToCardBtn.setOnClickListener(new View.OnClickListener() {
@@ -43,13 +51,14 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 object.setNumberInCart(numberOrder);
                 managmentCart.insertFood(object);
+                Toast.makeText(DetailActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Back button functionality
-        binding.backBtn.setOnClickListener(new View.OnClickListener(){
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
@@ -62,13 +71,11 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        // Add bookmark button functionality (optional)
+        // Add bookmark button functionality
         binding.bookmarkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implement bookmark functionality if needed
-                // For now, just show a message
-                android.widget.Toast.makeText(DetailActivity.this, "Added to bookmarks", android.widget.Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailActivity.this, "Added to bookmarks", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -87,5 +94,29 @@ public class DetailActivity extends AppCompatActivity {
 
         // Create and start the chooser
         startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }
+
+    private void setupBottomNavigation() {
+        // Find the profile layout in the bottom navigation bar
+        View profileLayout = findViewById(R.id.profileLayout);
+        if (profileLayout != null) {
+            profileLayout.setOnClickListener(view -> {
+                openProfilePage();
+            });
+        }
+
+        // You can also set click listeners directly on the imageView and textView if needed
+        binding.imageView2.setOnClickListener(view -> {
+            openProfilePage();
+        });
+
+        binding.textView100.setOnClickListener(view -> {
+            openProfilePage();
+        });
+    }
+
+    private void openProfilePage() {
+        Intent intent = new Intent(DetailActivity.this, ProfilePage.class);
+        startActivity(intent);
     }
 }
