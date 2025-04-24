@@ -58,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        // Wishlist button click listener
+        View wishlistLayout = binding.getRoot().findViewById(R.id.wishlistLayout);
+        if (wishlistLayout != null) {
+            wishlistLayout.setOnClickListener(view -> {
+                openWishlistPage();
+            });
+        }
+
         // You can also set click listeners directly on the imageView and textView if needed
         binding.imageView2.setOnClickListener(view -> {
             openProfilePage();
@@ -66,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         binding.textView100.setOnClickListener(view -> {
             openProfilePage();
         });
+    }
+
+    private void openWishlistPage() {
+        Intent intent = new Intent(MainActivity.this, Wishlist.class);
+        startActivity(intent);
     }
 
     private void openProfilePage() {

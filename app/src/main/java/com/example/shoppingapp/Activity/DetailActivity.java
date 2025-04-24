@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.shoppingapp.Helper.ManagmentCart;
+import com.example.shoppingapp.Helper.ManagmentWishlist;
 import com.example.shoppingapp.R;
 import com.example.shoppingapp.databinding.ActivityDetailBinding;
 import com.example.shoppingapp.domain.PopularDomain;
@@ -19,6 +20,8 @@ public class DetailActivity extends AppCompatActivity {
     private PopularDomain object;
     private int numberOrder=1;
     private ManagmentCart managmentCart;
+    private ManagmentWishlist managmentWishlist;
+    private boolean isBookmarked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,10 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getBundles();
         managmentCart = new ManagmentCart(this);
+        managmentWishlist = new ManagmentWishlist(this);
+
+        getBundles();
         setupBottomNavigation();
     }
 
@@ -44,6 +49,10 @@ public class DetailActivity extends AppCompatActivity {
         binding.descriptionTxt.setText(object.getDescription());
         binding.reviewTxt.setText(object.getReview() + "");
         binding.ratingTxt.setText(object.getScore() + "");
+
+        // Check if the item is already in wishlist and update bookmark button
+        isBookmarked = managmentWishlist.isInWishlist(object);
+        updateBookmarkButton();
 
         // Add to cart button functionality
         binding.addToCardBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,9 +84,32 @@ public class DetailActivity extends AppCompatActivity {
         binding.bookmarkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DetailActivity.this, "Added to bookmarks", Toast.LENGTH_SHORT).show();
+                toggleBookmark();
             }
         });
+    }
+
+    private void toggleBookmark() {
+        if (isBookmarked) {
+            // Remove from wishlist
+            managmentWishlist.removeItem(object);
+            isBookmarked = false;
+        } else {
+            // Add to wishlist
+            managmentWishlist.insertItem(object);
+            isBookmarked = true;
+        }
+        updateBookmarkButton();
+    }
+
+    private void updateBookmarkButton() {
+        if (isBookmarked) {
+            // Show filled/black bookmark icon
+            binding.bookmarkBtn.setColorFilter(getResources().getColor(android.R.color.black));
+        } else {
+            // Show outline/grey bookmark icon
+            binding.bookmarkBtn.setColorFilter(null);
+        }
     }
 
     // Share product details method
@@ -113,10 +145,23 @@ public class DetailActivity extends AppCompatActivity {
         binding.textView100.setOnClickListener(view -> {
             openProfilePage();
         });
+
+        // Add wishlist button functionality
+        LinearLayout wishlistLayout = findViewById(R.id.wishlistLayout);
+        if (wishlistLayout != null) {
+            wishlistLayout.setOnClickListener(view -> {
+                openWishlistPage();
+            });
+        }
     }
 
     private void openProfilePage() {
         Intent intent = new Intent(DetailActivity.this, ProfilePage.class);
+        startActivity(intent);
+    }
+
+    private void openWishlistPage() {
+        Intent intent = new Intent(DetailActivity.this, Wishlist.class);
         startActivity(intent);
     }
 }
