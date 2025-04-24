@@ -11,6 +11,8 @@ import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shoppingapp.Activity.DetailActivity;
 import com.example.shoppingapp.databinding.ViewholderPupListBinding;
 import com.example.shoppingapp.domain.PopularDomain;
 
@@ -53,6 +55,9 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(context, DetailActivity.class);
+                intent.putExtra("object",items.get(position));
+                context.startActivity(intent);
                 // Intent intent = new Intent(holder.itemView.getContext());
             }
         });
