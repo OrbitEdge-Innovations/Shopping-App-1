@@ -3,7 +3,10 @@ package com.example.shoppingapp.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.shoppingapp.Adapter.PopularAdapter;
@@ -24,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
         initRecyclerView();
         setupBottomNavigation();
+        bottomNavigation();
+    }
+
+    private void statusBarColor() {
+        Window window = MainActivity.this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(MainActivity.this, R.color.DarkBlueGreen));
+    }
+
+    private void bottomNavigation() {
+        binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
     }
 
     private void initRecyclerView(){

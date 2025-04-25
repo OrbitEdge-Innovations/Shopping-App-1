@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -58,7 +59,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cartView"
                 android:layout_width="match_parent"
-                android:layout_height="207dp">
+                android:layout_height="404dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -208,9 +209,10 @@
                     android:id="@+id/textView25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Payment Method"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 
                 <TextView
@@ -236,11 +238,12 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="19dp"
+                    android:layout_width="25dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView23"
-                    tools:layout_editor_absoluteX="16dp"
                     tools:srcCompat="@drawable/location" />
 
                 <TextView
@@ -306,14 +309,13 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button3"
                 style="@android:style/Widget.Button"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/button_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_background"
                 android:text="Order Now"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
