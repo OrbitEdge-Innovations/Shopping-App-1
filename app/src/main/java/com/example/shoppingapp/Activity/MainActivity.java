@@ -2,6 +2,9 @@ package com.example.shoppingapp.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -17,6 +20,8 @@ import com.example.shoppingapp.domain.PopularDomain;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText userEdt, passEdt;
+    private Button loginBtn;
     ActivityMainBinding binding;
 
     @Override
@@ -25,10 +30,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         initRecyclerView();
     }
-
     private void initRecyclerView(){
         ArrayList<PopularDomain>items=new ArrayList();
         items.add(new PopularDomain("T-shirt black", "item_1", 100, 4.5, 1, 20,"FABRIC: Cotton-polyester blend for perfect shape retention and easy maintenance.\n" +

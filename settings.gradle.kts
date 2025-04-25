@@ -30,6 +30,11 @@ dependencyResolutionManagement {
             library("espresso-core", "androidx.test.espresso:espresso-core:3.5.1")
         }
     }
+    versionCatalogs {
+        create("buildlibs") {
+            from(files("gradle/libs.versions.toml"))
+        }
+    }
 }
 
 rootProject.name = "ShoppingApp"
