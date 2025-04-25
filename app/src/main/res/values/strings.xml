@@ -4,4 +4,6 @@
     <string name="john_johnson">John Johnson</string>
     <string name="_1">1</string>
     <string name="search">Search...</string>
+    <string name="title_activity_cart">CartActivity</string>
+    <string name="title_activity_cart_activity.java">CartActivity.java</string>
 </resources>
