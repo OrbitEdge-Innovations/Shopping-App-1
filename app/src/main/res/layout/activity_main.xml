@@ -328,9 +328,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:layout_margin="1dp"
-            android:background="@drawable/edittext_background"
-            android:padding="4dp"
+            android:backgroundTint="@color/white"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="50dp"
             app:fabCradleVerticalOffset="6dp">
@@ -363,6 +361,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/wishlistLayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -430,6 +429,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/profileLayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"

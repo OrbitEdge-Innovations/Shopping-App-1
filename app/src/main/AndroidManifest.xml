@@ -52,6 +52,12 @@
         </activity>
 
         <activity
+            android:name=".Activity.Wishlist"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ProfilePage"
+            android:exported="false" />
+        <activity
             android:name=".Activity.DetailActivity"
             android:exported="false" />
         <activity
