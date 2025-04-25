@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity.CartActivity"
+            android:exported="false" />
         <activity
             android:name=".SignupActivity"
             android:exported="true">
@@ -28,14 +30,13 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
-        <!--        <activity-->
-        <!--            android:name=".EditProfileActivity"-->
-        <!--            android:exported="false">-->
-        <!--            <meta-data-->
-        <!--                android:name="android.app.lib_name"-->
-        <!--                android:value="" />-->
-        <!--        </activity>-->
+        </activity> <!-- <activity -->
+        <!-- android:name=".EditProfileActivity" -->
+        <!-- android:exported="false"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.app.lib_name" -->
+        <!-- android:value="" /> -->
+        <!-- </activity> -->
         <activity
             android:name=".LoginActivity"
             android:exported="false">
@@ -50,7 +51,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Activity.Wishlist"
             android:exported="false" />
